@@ -266,9 +266,9 @@ def calcul_theta(x0,z0,x,z):
     theta = mt.atan2((z-z0),(x-x0))
     return(theta)
 
-### Pression statique ###
-def calcul_press_stat(rho,vx,vz):
-    Pinf = Pa - 0.5*rho*pow(np.sqrt(pow(vx,2)+pow(vz,2)),2)
+### Pression dynamique ###
+def calcul_press_dyn(rho,v):
+    Pinf = 0.5*rho*pow(v,2)
     return(Pinf)
 
 
@@ -351,8 +351,8 @@ for i in range(mini,maxi):
     M = calcul_Mach(vz,vx)
     Liste_Mach.append(M)
 
-    # Pression statique #
-    Pinf = calcul_press_stat(rhoinf,vx,vz)
+    # Pression dynamique #
+    Pinf = calcul_press_dyn(rho0[i],Vit2[i])
     Liste_Pinf.append(Pinf)
 
     # Temps #
